@@ -1,0 +1,446 @@
+
+// verify the plugin
+ ====>  pip freeze
+ 
+ // if django is not installed
+  ====>  pip install django
+  
+// create django project
+  ====>   django-admin.py startproject students_app
+  
+// run a django server
+  ====>  python3 manage.py runserver
+
+  
+// create django app in the project
+  ====>  django-admin.py startapp students
+  
+ 
+// open the project with vscode 
+  ====>    code .
+ 
+  
+// ajout l'application au project
+
+INSTALLED_APPS = [
+   ...
+    'students',
+	...
+]
+
+  
+  
+ // connexion avec mysql
+  
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'school_db',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'saadham12**',
+    }
+}
+  
+  
+ // \welcome page 
+	1 configure the project urls
+	  ====> 
+					from django.contrib import admin
+					from django.urls import path, include
+
+					urlpatterns = [
+						path('admin/', admin.site.urls),
+						path('', include('students.urls')),
+					]
+
+
+
+	2 - create a views
+		 ====>  
+					def home(request):
+						return render(request, 'students/home.html', {})
+							
+	3 - create and configure the app urls
+			====> 
+						from django.urls import path
+						from . import views
+
+						urlpatterns = [
+							path('', views.home, name='home'),
+						]
+						
+	4 - create and configure a html home page
+			====>
+							{%extends 'students/layout.html' %}
+
+								{%block content%}
+									<center>
+
+										<h1>Bien Venues au systeme de gestion de notre Ecole</h1>
+
+									</center>
+
+							{%endblock%}
+
+
+
+// basics configuration for html pages of the project
+
+			1 - create a layout page
+			  ====> 
+							<!doctype html>
+							<html lang="en">
+							  <head>
+								<!-- Required meta tags -->
+								<meta charset="utf-8">
+								<meta name="viewport" content="width=device-width, initial-scale=1">
+
+								<!-- Bootstrap CSS -->
+								<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+								<title>Student System App</title>
+								<style>
+								  body {background: #f4f6f6;}
+								</style>
+							  </head>
+							  <body>
+								 {% include 'students/navbar.html' %}
+								  <br/>
+								<div class="container">
+								  {% if messages %}
+									{% for message in messages %}
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
+									  <strong> {{message}}</strong>
+									  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									</div>
+									{% endfor %}
+								  {% endif %}
+								{%block content%}
+
+								{%endblock%}
+								<div/>
+								<!-- Optional JavaScript; choose one of the two! -->
+
+								<!-- Option 1: Bootstrap Bundle with Popper -->
+								<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+								<!-- Option 2: Separate Popper and Bootstrap JS -->
+								<!--
+								<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+								<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+								-->
+							  </body>
+							</html>
+
+
+			2 - create a header(navbar) page
+			  ====> 
+							<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+								<div class="container-fluid">
+								  <a class="navbar-brand" href="{% url 'home' %}">My Web App</a>
+								  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								  </button>
+								  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+									  <li class="nav-item">
+										<a class="nav-link" href="{% url 'home' %}">Home</a>
+									  </li>
+
+									  <li class="nav-item">
+										<a class="nav-link" href="#">Courses</a>
+									  </li>
+
+									  <li class="nav-item">
+										<a class="nav-link" href="#">Classes Room</a>
+									  </li>
+									  <li class="nav-item">
+										<a class="nav-link" href="#">Teachers</a>
+									  </li>
+									  
+									  <li class="nav-item">
+										<a class="nav-link" href="#">tudents</a>
+									  </li>
+									</ul>
+									<form class="d-flex" method="POST" action="#">
+							  
+										{% csrf_token %}
+									  <input class="form-control me-2" type="search" placeholder="Search Venues" name="searched" aria-label="Search">
+									  <button class="btn btn-outline-primary" type="submit">Search</button>
+									</form>
+								  </div>
+								</div>
+							  </nav>
+
+			3 - create a footer page
+			  ====> 
+								....
+								.
+								.
+								.
+						
+			// configure modes
+			  ====> 
+							from django.db import models
+
+							class Person(models.Model):
+								name = models.CharField('Name', max_length=120)
+								gender = models.CharField('Gender', max_length=20)
+								email = models.CharField('Email Address', max_length=120)
+
+							class ClassRoom(models.Model):
+								class_name = models.CharField('ClassRoom Name', max_length=30)
+								description = models.TextField(blank=True)
+
+								def __str__(self):
+									return self.class_name
+
+							class Coures(models.Model):
+								course_name = models.CharField('Coures Name', max_length=120)
+								description = models.TextField(blank=True)
+
+								def __str__(self):
+									return self.course_name
+
+							class Teacher(models.Model):
+								person = models.ForeignKey(Person, blank=False, null=False, on_delete=models.CASCADE)
+								description = models.TextField(blank=True)
+								classRooms = models.ManyToManyField(ClassRoom, blank=False)
+								courses = models.ManyToManyField(Coures, blank=False)
+									
+								def __str__(self):
+									return self.person
+
+							class Student(models.Model):
+								person = models.ForeignKey(Person, blank=False, null=False, on_delete=models.CASCADE)
+								classRoom = models.ForeignKey(ClassRoom, blank=False, null=False, on_delete=models.CASCADE)
+								description = models.TextField(blank=True)
+								teachers = models.ManyToManyField(Teacher, blank=False)
+								courses = models.ManyToManyField(Coures, blank=False)
+									
+								def __str__(self):
+									return self.person
+
+
+// make magrations
+  ====> python3 manage.py makemigrations
+
+// magrate
+  ====> python3 manage.py migrate
+ 
+// create super admin access
+ ====>  python3 manage.py createsuperuser
+ 
+ 
+// list all students
+	1 - create a views
+		 ====>  
+						from .models import Student	
+
+						def students_list(request):
+							students = Student.objects.all().order_by('name')
+							return render(request, 'students/students_list.html', {
+								'students': students,
+							})
+							
+	2 - create a url
+		====>		path('students_list', views.students_list, name='students-list'),
+		
+	3 - create a html page templates/students_list.html
+		====>	
+						{% extends 'students/layout.html' %}
+
+						{% block content %}
+							<h1>Liste des Etudiants...</h1>
+								<table class="table table-bordered table-striped table-hover">
+								  <thead class="table-dark">
+									<tr>
+									  <th>Nom et Prenom</th>
+									  <th>Genre</th>
+									  <th>Adresse Email</th>
+									  <th>Classe</th>
+									  <th>Remarques</th>
+									</tr>
+								  </thead>
+								  <tbody>            
+									{% for student  in  students %} 
+									<tr class="success">
+									  <td>{{student.name}}</td>
+									  <td>{{student.email}}</td>
+									  <td>{{student.email}}</td>
+									  <td>{{student.classRoom.class_name}}</td>
+									  <td>{{student.description | truncatechars:20 }}</td>
+									</tr>
+									{% endfor %}
+								  </tbody>
+								</table>
+
+						{% endblock %}
+						
+	4 - define a link in navbar
+		====>		<li class="nav-item">
+							<a class="nav-link" href="{% url 'students-list' %}">Etudiants</a>
+						</li>
+					
+	
+// add new students
+
+1 - create a forms.py
+		====>	
+					class StudentForm(ModelForm):
+						class Meta:
+							model = Student
+							fields = ( 'name', 'gender', 'email', 'classRoom', 'description', 'teachers' , 'courses', )
+
+							labels = {
+								'name': '',  
+								'gender': '',    
+								'email': '',  
+								'classRooms': 'Selectionner la classe', 
+								'description': '',
+								'teachers': 'Selectionner les Enseignants',  
+								'courses': 'Selectionner les Courses',  
+							}
+
+							widgets = {
+								'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nom et Prenom',}),  
+								'gender': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Genre',}), 
+								'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Adresse Email',}), 
+								'classRooms': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Choisir la Classe',}),  
+								'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description',}), 
+								'teachers': forms.SelectMultiple(attrs={'class': 'form-select', 'placeholder': 'Choisir les Enseignants',}), 
+								'courses': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Choisir les Courses',}), 
+							}
+
+
+	2 - create a views
+		 ====>  
+						def add_student(request):
+							submitted = False
+							if request.method == "POST":
+								form = StudentForm(request.POST)
+								if form.is_valid():
+									form.save()
+									return HttpResponseRedirect('/add_student?submitted=True')
+							else:
+								form = StudentForm
+								if 'submitted' in request.GET:
+									submitted=True
+							return render(request, 'students/add_student.html', {
+								'form': form,
+								'submitted': submitted,
+							})
+
+							
+	3 - create a url
+		====>		 path('add_student', views.add_student, name='add-student'),
+		
+	4 - create a html page templates/add_student.html
+		====>	
+					{%extends 'students/layout.html' %}
+
+					{%block content%}
+					<div class="row">
+						<div class="col-sm-2"></div>
+					<div class="shadow p-4 mb-5 bg-body rounded col-md-8">
+						<center>
+
+							<h1>Ajouter un nouveau Etudiant</h1>
+						</br>
+						{% if submitted %}
+							<h1>Les Données du nouveau Etudiant ont été soumit avec succés...!</h1>
+						{% else %}
+						<form action="", method="POST">
+							{% csrf_token %}
+							{{ form.as_p}}
+
+							  <div class="d-flex justify-content-end mb-2">
+								<button type="submit" class="btn btn-primary mb-3" value="">Submit</button>
+							  </div>
+						</form>
+						{% endif %}
+						</center>
+					</div>
+					</div> 
+					{%endblock%}
+					
+	4 - define a link in emplates/students_list.html
+		====>		<div class="col-12 d-flex justify-content-end mb-2"> <a class="btn btn-primary sm " href="{% url 'add-student' %}">
+								Nouveau Etudiant
+						</a></div>
+						
+						
+ // student update
+	1 create a views
+	  ====> 
+					def update_student(request, student_id):
+					student = Student.objects.get(pk=student_id)
+					form = StudentForm(request.POST or None, instance=student)
+					if form.is_valid():
+						form.save()
+						return redirect('students-list')
+					return render(request, 'students/update_student.html', {
+						'student': student,
+						'form': form,
+					}) 
+
+	2 - create a url
+		 ====>  
+					dpath('update_student/<student_id>', views.update_student, name='update-student'),
+							
+	3 - create a html page templates/update_student.html
+			====> 
+						{%extends 'students/layout.html' %}
+
+							{%block content%}
+							<div class="row">
+								<div class="col-sm-2"></div>
+							<div class="shadow p-4 mb-5 bg-body rounded col-md-8">
+								<center>
+
+									<h1>Modifier les Données de l'Etudiant</h1>
+								</br>
+								{% if submitted %}
+									<h1>Les Données de l'Etudiant ont été Modifié avec succés...!</h1>
+								{% else %}
+								<form action="", method="POST">
+									{% csrf_token %}
+									{{ form.as_p}}
+
+									  <div class="d-flex justify-content-end mb-2">
+										<button type="submit" class="btn btn-primary mb-3" value="">Submit</button>
+									  </div>
+								</form>
+								{% endif %}
+								</center>
+							</div>
+							</div> 
+							{%endblock%}
+							
+	4 - define a link in emplates/students_list.html
+		====>		 <a class="btn btn-outline-primary sm" href="{% url 'update-student' student.id %}">
+							  Update
+						</a>
+						
+						
+							
+							
+// student delete
+	1 create a views
+	  ====> 
+					def delete_teacher(request, teacher_id):
+					teacher = Teacher.objects.get(pk=teacher_id)
+					teacher.delete()
+					return redirect('teachers-list')
+					
+	2 - create a url
+		 ====>  
+					 path('delete_student/<student_id>', views.delete_student, name='delete-student'),
+							
+	3 - 4 - define a link in emplates/students_list.html
+		====>		 <a class="btn btn-outline-danger sm" href="{% url 'delete-student' student.id %}">
+						  Delete
+						</a>
+

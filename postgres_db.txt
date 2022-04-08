@@ -1,0 +1,219 @@
+// connect/login as root - 
+
+	=====> sudo -i -u postgres
+	=====> sudo su - postgres
+	
+	=====> psql 
+	
+// list all database 
+
+	=====>  \list
+
+// switch to database
+
+	=====>  \c my_db
+	
+// list tables 	
+	
+	=====>  \dt	
+	
+// clear screen
+
+	=====>  \! clear
+	
+// create database
+
+	 create database school_db;
+	 
+// drop database
+
+	=====>  drop database school_db;
+	 
+// create database
+
+	=====>  CREATE TABLE levels ( 
+						 id  serial PRIMARY KEY not null,
+						  name VARCHAR(100),
+						  description TEXT
+						);
+						
+						
+// drop table						
+	=====>  drop table levels;
+	
+// insert to table		
+	
+	=====>  	
+						INSERT INTO levels (name, description) VALUES('6eme', 'First class of College');
+						INSERT INTO levels (name, description) VALUES('5eme', 'second class of College');
+						INSERT INTO levels (name, description) VALUES('4eme', 'Third class of College');
+						INSERT INTO levels (id, name, description) VALUES(5, '3eme', 'Forth class of College');
+						INSERT INTO levels (name, description) VALUES('2nd', 'First class of Secondary');
+						INSERT INTO levels (name, description) VALUES('1ere', 'second class of Secondary');
+	
+// select all from table
+	=====>  select * from levels;
+
+// delete from table
+	=====>  delete from levels where id = 5;
+	
+// update table
+	=====>  UPDATE levels SET name = 'Terminal D', description = 'last class of sciences in high school' WHERE id = 10;
+	
+// create database	
+		=====>  
+						CREATE TABLE students (
+							  id  serial PRIMARY KEY not null,
+							  name VARCHAR(100) NOT NULL,
+							  address VARCHAR(100) NOT NULL,
+							  fees double PRECISION NOT NULL,
+							  level_id INT NOT NULL,
+							  description TEXT,
+							  FOREIGN KEY (level_id) REFERENCES levels (id)
+						);
+						
+						
+		=====>  
+						INSERT INTO students (name, address, fees,  level_id, description) VALUES('Hamdane Khalil Hisseine', 'Quartier Ridina Tel: +23566200135',  25000, 5, 'En classe de Terminal D');
+						INSERT INTO students (name, address, fees,  level_id, description) VALUES('Halime Khalil Hisseine', 'Quartier Ridina Tel: +23566200135',  25000, 5, 'En classe de Terminal L');
+						INSERT INTO students (name, address, fees,  level_id, description) VALUES('Hamid Khalil Hisseine', 'Quartier Dinguessou Tel: +23566200135',  15000, 2, 'En classe de Terminal L');
+
+		=====>  
+						UPDATE students SET description = 'Eleve regulier et intelligent...' WHERE id = 3;
+					
+					
+// select from and join 2 table
+ 
+		=====>  
+						SELECT  students.*, levels.*  FROM students RIGHT JOIN levels ON levels.id = students.level_id ;
+						SELECT  students.*, levels.name as classe FROM students RIGHT JOIN levels ON levels.id = students.level_id ;
+						SELECT students.id, students.name, students.address, levels.name FROM students RIGHT JOIN levels ON levels.id = students.level_id;
+						SELECT  students.*, levels.*  FROM students RIGHT JOIN levels ON levels.id = students.level_id where students.id != 0;
+						SELECT  students.*, levels.name as classe FROM students RIGHT JOIN levels ON levels.id = students.level_id where students.id != 0;
+						SELECT students.id, students.name, students.address, levels.name  FROM students RIGHT JOIN levels ON levels.id = students.level_id where students.id != 0;
+						
+						
+						SELECT s.id,  s.name, s.address, l.name as classe FROM students s RIGHT JOIN levels l ON l.id = s.level_id where s.id != 0;
+  
+   
+		=====>  
+						CREATE TABLE cours ( 
+						 id  serial PRIMARY KEY not null,
+						  name VARCHAR(100),
+						  description TEXT
+						);
+ 
+		=====>  	
+						INSERT INTO cours (name, description) VALUES('Math', 'Mathematic: Algebre - Geometrie - analyse');
+						INSERT INTO cours (name, description) VALUES('SVT', 'Sciences de la vie et de la Terre');
+						INSERT INTO cours (name, description) VALUES('LVI AG', 'Langue Vivante Angalis');
+						INSERT INTO cours (name, description) VALUES('LVI AR', 'Langue Vivante Arabe');
+						INSERT INTO cours (name, description) VALUES('Informatique ', 'Initiation aux base de informatique');
+						INSERT INTO cours (name, description) VALUES('PC', 'Physique electrique - Physique dynamique - Chimie nucleaire');
+	
+		=====>  	
+	
+						CREATE TABLE students_cours ( 
+						 id  serial PRIMARY KEY not null,
+						 id_student integer REFERENCES students,
+						 id_cours integer REFERENCES cours
+						);
+		=====>  						
+						INSERT INTO students_cours (id_student,	 id_cours) VALUES (1,3);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (1,5);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (1,6);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (2,3);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (2,4);
+						INSERT INTO students_cours (id_student,	id_cours) VALUES (3,1);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (3,2);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (3,3);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (2,1);
+						INSERT INTO students_cours (id_student,  id_cours) VALUES (2,5);
+						
+	=====>  						
+					SELECT id, name, address, fees,  description,
+							array_to_string(array(SELECT students_cours.id_cours FROM 
+					students_cours WHERE students_cours.id_student = students.id), ',') AS cours
+					FROM students;
+
+
+ =====>  
+						CREATE TABLE teachers ( 
+						 id  serial PRIMARY KEY not null,
+						  name VARCHAR(100),
+						  description TEXT
+						);
+						
+					INSERT INTO teachers (name, description) VALUES('Djaber Khalil Hisseine', 'Master Teacher');
+					INSERT INTO teachers (name, description) VALUES('Hisseine Khalil Hisseine', 'Most popular teacher');
+					INSERT INTO teachers (name, description) VALUES('Adoum Khalil Hisseine', 'Very cool teacher');
+					
+	=====>  	
+	
+					CREATE TABLE students_teachers ( 
+						 id  serial PRIMARY KEY not null,
+						 id_student integer REFERENCES students,
+						 id_teachers integer REFERENCES teachers
+					);
+					
+					
+	=====>  	
+						INSERT INTO students_teachers (id_student,	 id_teachers) VALUES (1,1);
+						INSERT INTO students_teachers (id_student,  id_teachers) VALUES (1,2);
+						INSERT INTO students_teachers (id_student,  id_teachers) VALUES (1,3);
+						INSERT INTO students_teachers (id_student,  id_teachers) VALUES (2,3);
+						INSERT INTO students_teachers (id_student,  id_teachers) VALUES (2,1);
+						INSERT INTO students_teachers (id_student,	id_teachers) VALUES (3,1);
+						INSERT INTO students_teachers (id_student,  id_teachers) VALUES (3,2);
+						
+		=====>  						
+					SELECT id, name, address, fees,  description,
+							array_to_string(array(SELECT students_teachers.id_teachers FROM 
+					students_teachers WHERE students_teachers.id_student = students.id), ',') AS teachers
+					FROM students;
+					
+					
+	=====>  		
+
+	
+					SELECT students.id, students.name,  students.address, students.fees,  students.description, levels.name as classe,
+					
+							array_to_string(array(SELECT students_teachers.id_teachers FROM 
+					students_teachers WHERE students_teachers.id_student = students.id), ',') AS teachers,
+					
+							array_to_string(array(SELECT students_cours.id_cours FROM 
+					students_cours WHERE students_cours.id_student = students.id), ',') AS cours
+					
+					FROM students
+					
+					RIGHT JOIN levels  ON levels.id = students.level_id where students.id != 0;
+
+
+
+//*********************************************************************************************************************************************Remove Postgre
+1 - List All Postgres related packages
+
+	dpkg -l | grep postgres
+	
+ii  postgresql                                 12+214ubuntu0.1                       all          object-relational SQL database (supported version)
+ii  postgresql-12                              12.9-0ubuntu0.20.04.1                 amd64        object-relational SQL database, version 12 server
+ii  postgresql-client-12                       12.9-0ubuntu0.20.04.1                 amd64        front-end programs for PostgreSQL 12
+ii  postgresql-client-common                   214ubuntu0.1                          all          manager for multiple PostgreSQL client versions
+ii  postgresql-common                          214ubuntu0.1                          all          PostgreSQL database-cluster manager
+ii  postgresql-contrib                         12+214ubuntu0.1                       all          additional facilities for PostgreSQL (supported version)
+wenaklabs@wenaklabs-Latitude-5300:~$ 
+
+2 - Remove all above listed
+
+	sudo apt-get --purge remove postgresql postgresql-12  postgresql-client  postgresql-client-12 postgresql-client-common postgresql-common  postgresql-contrib postgresql-contrib-12
+
+3 - Remove the following folders
+
+	sudo rm -rf /var/lib/postgresql/
+	sudo rm -rf /var/log/postgresql/
+	sudo rm -rf /etc/postgresql/
+	
+4 - Remove the postgres user:
+	
+	sudo deluser postgres
+

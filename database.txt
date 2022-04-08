@@ -1,0 +1,185 @@
+// Database
+
+1 - Database
+
+A database is an organized collection of structured information, or data, typically stored electronically in a computer system. A database is usually controlled by a database management system (DBMS). ... 
+The data can then be easily accessed, managed, modified, updated, controlled, and organized.
+
+2 - Table
+3 - Column
+4 - Row
+5 - Primary Key
+6 - Foreign Key
+7 - Compound Key
+8 - Index
+9 - Redundancy
+
+
+//cmd access
+ =====> mysql -u root -p
+ruse: root 
+password: mysqlUbuntu123**
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'saadham12**';
+
+//list of all users
+SELECT user FROM mysql. user; 
+
+// list a databases
+ =====> show databases;
+ 
+// connect to database
+ =====> use mysql;
+
+//create a database
+  =====> create database my_db;
+ 
+ //drop a database
+   =====> drop database my_db;
+ 
+// list a tables in Database
+ =====> show tables;
+  =====> SHOW TABLES IN cafdo_db;
+ 
+// Table structure
+ =====> show columns from user;
+ 
+ //create user in mysql user  table
+ =====> CREATE USER 'khalil'@'localhost' IDENTIFIED BY 'saadham@123**';
+ 
+ // IF --- ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+ 
+ //set the password policy level lower
+  =====> 
+				SET GLOBAL validate_password.LENGTH = 4;
+				SET GLOBAL validate_password.policy = 0;
+				SET GLOBAL validate_password.mixed_case_count = 0;
+				SET GLOBAL validate_password.number_count = 0;
+				SET GLOBAL validate_password.special_char_count = 0;
+				SET GLOBAL validate_password.check_user_name = 0;
+				ALTER USER 'user'@'localhost' IDENTIFIED BY 'pass';
+				FLUSH PRIVILEGES;
+				
+
+// permissions to do anything with the databases
+  =====> 
+				GRANT ALL PRIVILEGES ON * . * TO 'khalil'@'localhost';
+				FLUSH PRIVILEGES;
+				
+				
+//chech a user 
+SELECT host, user, authentication_string FROM user WHERE user = 'khalil';
+
+//chech all state of user 
+select * from user where user = 'khalil';
+
+//give grants
+grant create,select,insert,update,delete on `cafdo_db%`.* to 'user'@'localhost';
+
+//remove grants
+REVOKE create,select,insert,update,delete ON `cafdo_db%`.*  FROM 'hamdane'@'localhost';
+
+ //create user in mysql user  table
+CREATE USER 'hamdane'@'localhost' IDENTIFIED BY 'hamdane123';
+
+//give grants
+grant select on `cafdo_db%`.* to 'hamdane'@'localhost';
+
+DROP USER 'hamdane'@'localhost';
+
+//mysql crud cmds
+
+//create a database
+  =====> create database school_db;
+  
+  //delete database
+  =====>   drop database school_db; 
+
+
+//create a new table
+  =====>
+				CREATE TABLE school_db. `level`(  
+				  `id` INT(10) UNSIGNED AUTO_INCREMENT NOT NULL,
+				  `name` VARCHAR(30) NOT NULL,
+				 `description` VARCHAR(200)  NULL,
+				  PRIMARY KEY (`id`)
+				);
+				
+// select all from table
+  =====>   select * from school_db. `levels`;
+  
+//rename a table
+  =====>   ALTER TABLE school_db. level RENAME TO school_db. levels;
+  
+//filter a table elements asc and desc
+  =====>   select * from school_db. `levels` order by name asc;
+  =====>   select * from school_db. `levels` order by name desc;
+   
+// select by id from table
+  =====>   select * from school_db. `levels` where id = 1;
+  
+// logical and comparison operators ( =, <, >, <=, =>, !=, AND, OR NOT....)
+   select * from school_db. `levels` where id <= 2;
+				
+// partial section
+  =====>   select name from school_db. `levels`;
+
+				
+// table structure
+  =====>   show columns from school_db. `levels`;
+  =====>   describe school_db. `levels`;
+
+//delete a table
+  =====>   drop table school_db. `levels`;
+ 
+  
+ //insertion in  a table
+  =====>  INSERT INTO school_db. `levels` (name, description) VALUES ('6eme', 'Premiere classe niveau college');
+  
+ //update  a table insertion
+  =====>  update school_db. `levels` set name = '4eme', description = 'Troisieme classe au college' where id = 2;
+  
+ //elete one insertion from table 
+   =====>   delete from school_db. `levels` where id = 2;
+   
+ // foreign key
+    =====>   
+				 CREATE TABLE school_db.  `students` (
+				   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+				   `name` VARCHAR(255)  NOT NULL,
+				   `address` VARCHAR(155) NOT NULL,
+				   `fees` VARCHAR(155) NOT NULL,
+				   `level_id` INT(10) UNSIGNED NOT NULL,
+				   PRIMARY KEY (`id`),
+				   KEY `id` (`id`,`level_id`),
+				   KEY `tbl_level` (`level_id`),
+				   CONSTRAINT `tbl_level` FOREIGN KEY (`level_id`) REFERENCES `levels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+				 ) ENGINE=INNODB DEFAULT CHARSET=utf8
+				 
+//modify a column type				 
+ALTER TABLE school_db.  students MODIFY fees DOUBLE not NULL;
+
+// insertion in  a table
+   =====>  INSERT INTO school_db. `students` (name, address, fees, level_id) VALUES ('Amna Khali Hisseine', 'Rue de 40 Metres', 200000,  6);
+  
+// search
+  =====>  select *  school_db.  `students` where name like '%s';
+  =====>  select * from `students` where name like '%s%';
+
+ 
+ // select from and join 2 table
+ 
+  =====>  SELECT  students.*, levels.*  FROM students RIGHT JOIN levels ON levels.id = students.level_id ;
+
+  =====> SELECT  students.*, levels.name as classe FROM students RIGHT JOIN levels ON levels.id = students.level_id ;
+ 
+  =====>  SELECT students.id, students.name, students.address, levels.name FROM students RIGHT JOIN levels ON levels.id = students.level_id;
+  
+  =====>  SELECT  students.*, levels.*  FROM students RIGHT JOIN levels ON levels.id = students.level_id where students.id != 0;
+  
+  =====>  SELECT  students.*, levels.name as classe FROM students RIGHT JOIN levels ON levels.id = students.level_id where students.id != 0;
+
+  =====>  SELECT students.id, students.name, students.address, levels.name  FROM students RIGHT JOIN levels ON levels.id = students.level_id where students.id != 0;
+
+  =====>  SELECT students.id, students.name, students.address, levels.name as classe FROM students RIGHT JOIN levels ON levels.id = students.level_id where students.id != 0;
+  

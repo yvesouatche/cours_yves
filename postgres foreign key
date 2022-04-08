@@ -1,0 +1,10 @@
+CREATE TABLE evaluations (
+							  code_evaluation  serial PRIMARY KEY not null,
+							  date_evaluation date,
+							  note decimal,
+							  code_etudiant varchar(5) not null,
+							  code_mat varchar(5) NOT NULL,
+							  FOREIGN KEY (code_etudiant) REFERENCES etudiants (code_etudiant),
+							   FOREIGN KEY (code_mat) REFERENCES matieres (code_mat)
+						);
+						

@@ -1,0 +1,157 @@
+//*******************************************************************************Cassandra Install************************************************************
+//cassandra
+
+//Install java jre
+====> sudo apt install openjdk-8-jre-headless
+
+//chek the current path
+====> pwd
+
+//the  current path
+====> /usr/lib/jvm/java-8-openjdk-amd64
+
+//to launch nano text editor
+====> sudo nano ~/.bashrc
+
+// add this to nano text editor
+====> JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+//install curl packages
+====> sudo apt install curl
+
+//add the repository for version 4.0
+====> echo "deb http://www.apache.org/dist/cassandra/debian 40x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+//Add the Apache Cassandra repository keys 
+====> curl -L https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+
+// update the package index from sources
+====> sudo apt-get update
+
+//install cassandra with apt
+====> sudo apt-get install cassandra
+
+//check the status
+====> sudo service cassandra status
+ 
+//start the server
+====> sudo service cassandra start
+
+ //stop the server
+====> sudo service cassandra stop
+ 
+// check the status of cassandra
+ ====> nodetool status
+ 
+// install cqlsh libraries
+====> pip install cqlsh
+
+//start a cassandra query services
+====> cqlsh
+
+//**********************************************************************************************************************cassandra queries
+
+//start a cassandra query services
+====> cqlsh
+
+//create db
+====> CREATE KEYSPACE school_db WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'} AND durable_writes = 'true';
+
+//list all dbs
+DESC KEYSPACES
+
+//switch to db
+====> USE school_db ;
+
+  //create a table students
+====> CREATE TABLE students(id timeuuid PRIMARY KEY, name text, fees double, address text); 
+====> DESC TABLE students
+
+// drop a table
+DROP TABLE students ;
+
+//insert into table using timeuuid
+====>INSERT INTO students(id, name, fees, address) VALUES(now(), 'Hamid Khalil ', 25000, '+23566200135');
+====> select * from students;
+
+//update into table using timeuuid
+====> update students set address='+23566300000', name = 'Hamid Khalil' where id = eeaf8ad0-8119-11ec-9161-e77bb6b30ec2;
+====> select * from students;
+
+
+//delete into table using timeuuid
+====> delete from students where id = eeaf8ad0-8119-11ec-9161-e77bb6b30ec2;
+====> select * from students;
+
+ 
+ //******************************************************************************************************************************** Alter table for one to one
+
+====> ALTER TABLE students ADD level map<text, text>;
+====> DESC TABLE students;
+
+//insert into table by timeuuid  for one to one
+ INSERT INTO students(id, name, fees, address, level) VALUES(now(), 'Hamid Khalil', 25000, '+23566200135', {'Classe':'3eme', 'Description':'last classe of college'});
+// list all in the table
+====> select * from students;
+
+ //******************************************************************************************************************************** Alter table for one to many
+ 
+====> ALTER TABLE students ADD  courses map<text, frozen<course>>;
+====> DESC TABLE students;
+
+
+//insert into table using timeuuid
+====>
+INSERT INTO students (id, name, fees, address, level, courses)
+   VALUES (now(), 'Halime Khalil ', 25000, '+23566200135', 
+   {'Classe':'3eme', 'Description':'last classe of college'},
+   {
+     'courses1' : {
+        name: 'Bio', 
+		description: 'Biologie Humaine'
+     },
+     'courses2' : {
+        name: 'Math', 
+		description: 'Mathematiques Analyse' 
+     }
+  }
+);
+
+====> select * from students;
+
+ //******************************************************************************************************************************** Alter table for one to many second time
+ //alter table for one to many
+====> ALTER TABLE students ADD  teachers map<text, frozen<teacher>>;
+====> DESC TYPES;
+
+//insert into table using timeuuid
+====>
+INSERT INTO students (id, name, fees, address, level, courses, teachers)
+   VALUES (now(), 'Zahara Khalil ', 25000, '+23566200135', 
+   {'Classe':'3eme', 'Description':'last classe of college'},
+   {
+     'courses1' : {
+        name: 'Bio', 
+		description: 'Biologie Humaine'
+     },
+     'courses2' : {
+        name: 'Math', 
+		description: 'Mathematiques Analyse' 
+     }
+  },
+  {
+     'Teacher1' : {
+        name: 'Halima Hisseine', 
+		description: 'Biologie Tcheacher'
+     },
+     'Teacher2' : {
+        name: 'Jean Bernard', 
+		description: 'Math Teacher' 
+     }
+  }
+);
+
+====> select * from students;
+
+
+====> desc school_db;

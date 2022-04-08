@@ -1,0 +1,256 @@
+//verify mongo_db status
+  =====> sudo systemctl status mongod
+
+//run a mongo_db server
+  =====> sudo systemctl start mongod
+
+//connecte to mongo_db server 
+  =====> mongo
+
+//list databases
+  =====> db
+  
+// create and start using a new database
+  =====>  use shool_db
+ 	
+		
+// list collections (tables)
+  =====>  show collections
+
+//insert documents 
+  =====>  
+db.students.insert({
+    name: "Hamdane Khalil Hisseine",
+	fees: NumberDecimal("15000.99"),
+    address: "Ridina - Tel: +23566200135",
+    level: {
+						name: "Terminal D",
+						description: "Terminal Scientifique Biologie et Chimie"
+					},
+    courses: [
+    
+								{
+									name: "Math",
+									description: "Mathematique"
+								},
+								{
+									name: "PC",
+									description: "Physique et Chimie"
+								}
+								,
+								{
+									name: "SVT",
+									description: "Science de la vie et de la Terre"
+								}
+								,
+								{
+									name: "LVI",
+									description: "Langue vivante Anglais"
+								}
+						],
+    teachers: 
+						[
+
+							{
+								name: "Rajkot Gujarat",
+								description: "An expart Teacher"
+							},
+							{
+								name: "Djhon Doe",
+								description: "Cool Techear"
+							}
+						]	
+})
+
+//insertMany documents 
+  =====>  
+db.students.insertMany([
+
+					{
+						name: "Aicha Khalil Hisseine",
+						fees: NumberDecimal("15000.99"),
+						address: "Ridina - Tel: +23566200135",
+						level: {
+											name: "5eme",
+											description: "Deuxieme classe du College"
+										},
+						courses: [
+						
+													{
+														name: "Math",
+														description: "Mathematique"
+													},
+													{
+														name: "PC",
+														description: "Physique et Chimie"
+													}
+													,
+													{
+														name: "SVT",
+														description: "Science de la vie et de la Terre"
+													}
+													,
+													{
+														name: "LVI",
+														description: "Langue vivante Anglais"
+													}
+											],
+						teachers: 
+											[
+
+												{
+													name: "Justine Junior"
+												},
+												{
+													name: "Djhon Doe",
+													description: "Cool Techear"
+												}
+											]	
+					},
+									{
+										name: "Djaber Khalil Hisseine",
+										fees: NumberDecimal("10000.99"),
+										address: "Ridina - Tel: +23566200135",
+										level: {
+															name: "3eme",
+															description: "4eme Class du College"
+														},
+										courses: [
+										
+																	{
+																		name: "Math",
+																		description: "Mathematique"
+																	},
+																	{
+																		name: "PC",
+																		description: "Physique et Chimie"
+																	}
+																	,
+																	{
+																		name: "SVT",
+																		description: "Science de la vie et de la Terre"
+																	}
+																	,
+																	{
+																		name: "LVI",
+																		description: "Langue vivante Anglais"
+																	}
+															],
+										teachers: 
+															[
+
+																{
+																	name: "Rajkot Gujarat",
+																	description: "An expart Teacher"
+																},
+																{
+																	name: "Djhon Doe",
+																	description: "Cool Techear"
+																}
+															]	
+									},
+									{
+										name: "Hisseine Khalil Hisseine",
+										fees: NumberDecimal("15000.99"),
+										address: "Ridina - Tel: +23566200135",
+										level: {
+															name: "1ere",
+															description: "Deuxieme classe du Lycee"
+														},
+										courses: [
+										
+																	{
+																		name: "Math",
+																		description: "Mathematique"
+																	},
+																	{
+																		name: "PC",
+																		description: "Physique et Chimie"
+																	}
+																	,
+																	{
+																		name: "SVT",
+																		description: "Science de la vie et de la Terre"
+																	}
+																	,
+																	{
+																		name: "LVI",
+																		description: "Langue vivante Anglais"
+																	}
+															],
+										teachers: 
+															[
+
+																{
+																	name: "Rajkot Gujarat",
+																	description: "An expart Teacher"
+																},
+																{
+																	name: "Djhon Doe",
+																	description: "Cool Techear"
+																}
+															]	
+									}
+
+])
+
+
+
+//check whether a document
+  =====>  db.students.find().pretty()
+
+// get a single record
+  =====> 
+				  db.students.find({"_id" : ObjectId("61c95ec8463c44879ae3585e")}).pretty()
+
+// update an existing record
+  =====>  
+				db.students.update({"_id" : ObjectId("61c95ec8463c44879ae3585e")},  {$set:{ name:'Hamid Khalil Hisseine'}})
+				
+// remove a record
+  =====>  db.students.remove({"_id" : ObjectId("61c95ec8463c44879ae3585e")})
+
+// drop an entire collection
+  =====>  db.students.drop()
+  
+// drop a database
+  =====>  db.dropDatabase()
+
+
+
+
+
+
+
+//
+
+pip install djongo
+
+python3 -m pip install mongoengine
+
+// make magrations
+  ====> python3 manage.py makemigrations
+
+// magrate
+  ====> python3 manage.py migrate
+ 
+// create super admin access
+ ====>  python3 manage.py createsuperuser
+
+
+// ***************************************************************************************************************************installations mongo db***************************************************************************************************************************
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+apt-key list
+
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+
+// ************************************************************************************************************************Install Mongo Compass***********************************************************************************************************************
+sudo apt update
+
+sudo apt -f install
+
+sudo dpkg -i  mongodb-compass_1.29.6_amd64.deb
+

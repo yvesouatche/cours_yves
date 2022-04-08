@@ -1,0 +1,100 @@
+1 - Qu'est-ce que MySQL ?
+2 - Quel est le numéro de port par défaut de MySQL ?
+3 - La requête MySQL est-elle sensible à la casse ?
+4 - Répertorier certains types de données disponibles pour la colonne ?
+5 - Quelle est la différence entre FLOAT et DOUBLE ?
+6 -  est la différence entre CHAR et VARCHAR ?
+7 - Quelle est la différence entre la base de données et la table ?
+8 - Quelle est la différence entre les opérateurs LIKE et REGEXP ?
+9 - Comment créer une table avec MySQL ?
+9 - Comment supprimer d'une table MySQL ?
+11 - Comment mettre à jour la table dans MySQL ?
+12 - Comment supprimer une ligne d'une table MySQL ?
+13- Quelle est la différence entre les commandes DELETE TABLE et TRUNCATE TABLE dans MySQL ?
+14 - Comment pouvez-vous changer le nom d'une table existante à l'aide de l'instruction SQL ?
+15 - Comment vérifier la version MySQL ?
+16 - Comment ajouter des colonnes dans MySQL ?
+17 - Comment changer le nom de la colonne dans MySQL ?
+18 - Comment définir la colonne d'incrémentation automatique dans MySQL ?
+19 - Comment trouver le deuxième salaire le plus élevé dans MySQL ?
+20 - Comment modifier le nom d'une colonne dans MySQL ?
+21 - Comment enregistrer des images dans MySQL ?
+22 - Qu'entendez-vous par % et _ dans l'instruction LIKE ?
+23 - Comment créer un nouvel utilisateur dans MySQL ?
+24 - Comment vérifier les UTILISATEURS dans MySQL ?
+25 - Quelle est la différence entre la clé primaire et la clé candidate ?
+26 - Comment ajouter des clés étrangères dans MySQL ?
+27 - Qu'est-ce qu'une jointure ? Expliquez les différents types de jointures MySQL.
+28 - Comment joindre deux tables dans MySQL ?
+29 - Comment créer un index dans MySQL ?
+30 - Comment supprimer des données d'une table MySQL ?
+3 1- Qu'est-ce que MySQL Workbench ?
+32 - Quelle est la liste des types de données de chaîne dans MySQL ?
+33 - Quels sont les types de données temporelles dans MySQL ?
+34 - Qu'est-ce que BLOB dans MySQL ?
+35 - Que sont les « vues » de MySQL ?
+36 - Comment créer et exécuter des vues dans MySQL ?
+37 - Que sont les déclencheurs MySQL ?
+38 - Combien de déclencheurs sont possibles dans MySQL ?
+39 - Combien de déclencheurs sont possibles dans MySQL ?
+40 - Qu'est-ce que le serveur MySQL ?
+41 - Quels sont les clients et utilitaires MySQL ?
+42 - Quels sont les types de relations utilisées dans MySQL ?
+43 - Que sont les moteurs de stockage de transactions dans MySQL, en lister quelques-uns ?
+44 - Dans quelle langue MySQL a-t-il été écrit ?
+45 - Quelles sont les spécifications techniques de MySQL ?
+46 - Quelle est la différence entre MySQL et SQL ?
+47 - Quelle est la différence entre la base de données et la table ?
+48 - Que fait "i_am_a_dummy flag" dans MySQL ?
+49 - Pourquoi utilisons-nous le serveur de base de données MySQL ?
+50 - Comment changer le mot de passe MySQL ?
+51 - Comment importer une base de données dans MySQL ?
+52 - Comment joindre trois tables dans MySQL ?
+53 - Qu'est-ce qu'une procédure stockée dans MySQL ?
+54 - Comment créer une procédure stockée dans MySQL ?
+55 - Comment exécuter une procédure stockée dans MySQL ?
+56 - Qu'est-ce que la table de tas  en MySQL?
+57 - Écrire une requête pour afficher la date et l'heure actuelles ?
+58 - Écrivez une requête pour compter le nombre de lignes d'une table dans MySQL.
+59 - Quelle est l'utilisation des ENUM dans MySQL ?
+60 - Quelle est la fonction de mysqldump ?
+61 - Qu'est-ce que le répertoire de données MySQL ?
+62 - Listez 3 fonctions intégrées, définissez-les, utilisez-les dans la demande ?
+63 - qu'est-ce qu'une agrégation dans MySQL ?
+64 - Pourquoi utilisons-nous des fonctions d'agrégation ?
+65 - Comment déterminez-vous l'emplacement du répertoire de données MySQL ?
+66 - Que sont les tables fédérées ?
+67 - Lister 3 pilotes dans MySQL ?
+68 - Qu'est-ce qu'un curseur ?
+69 - Quelle est la différence entre une table Heap et une table Temporaire ?
+70 - Expliquez l'origine de PostgreSQL.
+71 - Qu'est-ce que la base de données PostgreSQL ?
+72 - Expliquer certaines fonctionnalités de PostgreSQL ?
+73 - Quels sont les différents types de données dans PostgreSQL ?
+74 - Quel est le numéro de port par défaut de PostgreSQL ?
+75 - Comment créer une table avec PostgreSQL ?
+76 - Comment mettre à jour la table dans PostgreSQL ?
+77 - Comment supprimer une colonne d'une table PostgreSQL ?
+78 - Qu'est-ce qu'une table double dans PostgreSQL ? A quoi ça sert ?
+79 - En quoi PostgreSQL est-il différent de SQL Server ?
+80 - Comment sélectionner les 10 premiers enregistrements dans PostgreSQL ?
+81 - Quels sont les index dans PostgreSQL ?
+82 - Qu'est-ce qu'une requête parallèle dans PostgreSQL ?
+83 - Que sont les vues dans PostgreSQL ?
+84 - Expliquer les fonctions dans PostgreSQL
+85 - Expliquez l'héritage PostgreSQL. Comment PostgreSQL implémente l'héritage de table ? A quoi ça sert ?
+86 - Expliquer le partitionnement de table dans PostgreSQL.
+87 - Quelle est la taille maximale d'une table dans PostgreSQL ?
+88 - Expliquer les index dans PostgreSQL.
+89 - Expliquer à propos de la journalisation en écriture anticipée dans PostgreSQL ?
+90 - Comment créer un utilisateur Postgresql ?
+91 - Comment changer le mot de passe d'un utilisateur Postgresql ?
+92 - Comment effectuer des requêtes à l'aide de plusieurs bases de données dans PostgreSQL ?
+93 - Est-il possible de créer un cluster de serveurs PostgreSQL à stockage partagé ?
+94 - Quand devons-nous utiliser PostgreSQL ?
+95 - Qu'est-ce que le contrôle multi-versions de PostgreSQL ?
+96 - Que sont les jetons dans PostgreSQL ?
+97 - Qu'est-ce que Ctid dans PostgreSQL ?
+98 - Qu'est-ce qu'une séquence dans PostgreSQL ?
+99 - Comment pouvons-nous stocker des données binaires dans PostgreSQL ?
+100 - PostgreSQL est-il une bonne option pour le big data ?

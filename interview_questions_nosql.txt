@@ -1,0 +1,101 @@
+1) Qu'entendez-vous par bases de données NoSQL ? MongoDB est-il une base de données NoSQL ? Explique
+
+2) Quels sont les différents langages supportés par MongoDB ?
+----javascript,c,c++,python
+
+3) Quels sont les différents types de bases de données NoSQL ? Donnez un exemple.
+
+4) MongoDB est-il meilleur que les autres bases de données SQL ? Si oui alors comment ?
+
+5) Quel type de SGBD est MongoDB ?
+
+6) Quelle est la différence entre MongoDB et MySQL ?
+
+7) Pourquoi MongoDB est connu comme la meilleure base de données NoSQL ?
+-----Base NoSQL la plus populaire, MongoDB est saluée pour la souplesse de sa structure et sa capacité à répondre à un grand nombre de besoins
+
+8) MongoDB prend-il en charge les relations entre clé primaire et clé étrangère ?
+
+9) Pouvez-vous établir des relations clé primaire - clé étrangère dans MongoDB ?
+
+10) MongoDB a-t-il besoin de beaucoup de RAM ?
+
+11) Expliquez la structure d'ObjectID dans MongoDB.
+
+12) Est-il vrai que MongoDB utilise BSON pour représenter la structure du document ?
+
+13) Que sont les index dans MongoDB ?
+
+14) Par défaut, quel index est créé par MongoDB pour chaque collection ?
+
+15) Qu'est-ce qu'un espace de noms dans MongoDB ?
+
+16) Les fonctionnalités de journalisation peuvent-elles être utilisées pour effectuer hot backups sécurisées ?
+
+17) Pourquoi MongoDB utilise-t-il un profiler?
+
+18) Si vous supprimez un attribut d'objet, est-il supprimé de la base de données ?
+
+19) Dans quelle langage MongoDB est écrit ?
+
+20) MongoDB a-t-il besoin de beaucoup d'espace de mémoire vive (RAM) ?
+
+21) Avec quoi les langages peuvent se connecter a une base des donnees MongoDB ?
+
+22) La base de données MongoDB a-t-elle des tables pour stocker les enregistrements ?
+
+23) Les bases de données MongoDB ont-elles un schéma ?
+
+24) Quelle est la méthode pour configurer la taille du cache dans MongoDB ?
+
+25) Qu'est-ce qu'un moteur de stockage ? Quels sont les différents types de moteurs de stockage disponibles dans MongoDB ?
+
+26) Quel est le mécanisme de réplication dans MongoDB ?
+
+27) Quelle est la différence entre un secondaire et un esclave dans un cluster Mongodb?
+
+28) Creer une base de donnees Mongodb?
+
+29) Creer un document Mongodb?
+
+30) Effectuer les operations CRUD?
+
+31) Décrire ce qu'est Apache Cassandra ?
+
+32) Qu'est-ce que CQL dans Cassandra?
+
+33) Décrire Keyspace dans Cassandra ?
+
+34) Expliquez la super colonne de Cassandra ?
+
+35) Décrivez les avantages de l'utilisation de Cassandra ?
+
+36) Expliquer Apache Cassandra par rapport aux bases de données traditionnelles?
+
+37) Quelles sont les caractéristiques des fonctions de Cassandre ?
+
+38) Lister quelques termes clés de Cassandre ?
+
+39) Qu'est-ce qu'un nœud dans Cassandre ?
+
+40) Qu'est-ce qu'un cluster à Cassandra ?
+
+41) Qu'est-ce qu'un centre de données à Cassandra ?
+
+42) Définir le facteur de réplication dans Cassandra ?
+
+43) Décrivez un memtable dans Cassandra ?
+
+44) Qu'est-ce que SSTable dans Cassandre ?
+
+45) Définir une famille de colonnes dans la table Cassandra ?
+
+46) Comment se fait la distribution des données dans Cassandra ?
+
+47) Comment Cassandra stocke-t-elle les données ?
+
+48) Qu'entendez-vous par ACIDE ?
+
+49)  Qui a développé Cassandra et dans quelle langage ?
+
+50)  Creer une table dans cassandra DB en utilisant un type , executer les operations CRUD dans cette table.
