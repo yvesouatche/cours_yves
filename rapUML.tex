@@ -1,0 +1,177 @@
+\documentclass[12pt, openany]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  \includegraphics[scale=0.8]{index.jpg}~\\[1.5cm]
+  \textsc{\LARGE TECH4TCHAD}\\[2cm]
+\textsc{\Large DATA DEVELOPPER\\ }
+\textsc{\Large Matière UML\\ }
+    % Title
+    \HRule \\[0.4cm]
+    { \huge \bfseries Thème: Système de gestion d'une production industrielle YPRODUCT
+\\[0.4cm] }
+
+    \HRule \\[2cm]
+
+    % Author and supervisor
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+      \textbf{ Présenté par :}\\
+      Yves Ouatché\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+        \emph{\textbf{Formateur:}}\\ Mr \textsc{ Massar Ali Mahamat}\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+ % Bottom of the page
+    {\large ANNÉE 2021 - 2022 }
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+\newpage
+\begin{center}
+\textbf{Plan du travail}
+\end{center}
+\begin{enumerate}
+\item CAHIER DE CHARGE
+\item Contexte du projet
+\item Expression des besoins et la charte graphique
+\item Analyse de l’existant,critiques et solutions
+\item Choix de la technologie utilisée
+\item Conception du système
+\item Implémentation de la base de donnée
+\item Conclusion
+\end{enumerate}
+\newpage
+\begin{center}
+\textbf{CAHIER DE CHARGE}\\
+\end{center}
+\textbf{Contexte du projet}\\
+La société  de production YPRODUCT souhaite informatiser la gestion de sa production de Yaourt. \\
+Cette production se fait après avoir fait une étude industrielle et commerciale du marché.\\
+La production se fait à base de matière première qui est identifié par un nom et chaque matière première est caractérisé par un catégorie ou type de cette matière première et qui est fourni par un fournisseur qui est en partenariat avec la société.
+L’équipe de GRH s’occupe des personnelles de la société et de la planification des taches pour une bonne réalisation de la production.\\
+La production se fait en grande quantité et la gestion est assuré par le chef logistique et  qui coordonne avec l’équipe de distributions(livraison) et de commercialisation(vente) aux clients.\\
+Chaque produit est vendu sur établissement d’une facture par la comptabilité (caisse);\\
+La maintenance est assuré par l’équipe technique composé des ingénieurs en informatique,en production et en électromécanique.\\
+\\
+\textbf{Expression des besoins et la charte graphique}\\
+\\
+Dans le but de développer un système cohérent et complet, une phase de spécification de
+besoins est jugée très importante ; \\
+En effet, elle permet de recenser les fonctionnalités du système et de définir son architecture fonctionnelle.\\
+Ce système aura comme besoin fonctionnelle :\\
+•Consultation de la disponibilité des stocks\\
+•L’enregistrement d’une réservation par un client ;
+• L’archivage et l’enregistrement des réservations qui ont été effectuées avant l’arrivée du client ;\\
+•L’enregistrement des diverses productions ;\\
+• L’établissement et l’enregistrement de la facture au départ du client ;\\
+•l’enregistrement des matières premières fournies par le fournisseurs .\\
+Les besoins non fonctionnels comme la sécurité, facilité d’utilisation et une interface
+conviviale simple à utiliser par les futurs utilisateurs du système ;\\
+
+\newpage
+\begin{center}
+\textbf{Analyse de l’existant,critiques et solutions}\\
+\end{center}
+
+\textbf{Aspect positif}\\
+Au terme de l'analyse de l'existant, il convient d'avouer que la société a au moins un système d'organisation bien défini du point fonctionnel et organisationnel. Cependant, YPRODUCT ne pourra renforcer l'efficience de ses services s'il arrive à surmonter les insuffisances techniques constatées.\\
+La société ainsi que son personnel offre : \\
+• un bon contrôle de matériel ;\\
+• une bonne circulation des informations et transparence des documents entre les partenaires ;\\
+• une bonne collaboration et transmissions des informations entre eux.\\
+\textbf{Aspect négatif}\\
+•Les documents étant conservés dans les classeurs à papiers, l'accès est difficile étant donné il faut toujours une recherche sérieuse pour retrouver un document tel que : liste des agents, des clients,des fournisseurs, fiche de paie et tant d'autres ;\\
+•pour que le coordonnateur puisse voir la recette produit pendant la journée, il faut qu'il se déplace, venir obligatoirement à la société;\\
+• Le lenteur considérable dans le traitement de l'information ;\\
+•Le suivi de document est très fatiguant à cause de volume élevé des informations ;
+•La société ne possède aucun stabilisateurs, deux ordinateurs et pas même d'une connexion Internet.\\
+Cependant,Pour cette manque des onduleurs et stabilisateurs, des matériels informatiques qui a causé tant de perte de temps et d’argent à la société,de plus elle n'a pas un personnel qualifié en informatique ;\\
+\textbf{Proposition des solutions}\\
+La solution manuelle consiste en une simple réorganisation du système en reconduisant les qualités tout en conservant le traitement manuel. Cette proposition qui ne garantit en rien la rapidité dans l'exécution des tâches, occasionnera des erreurs de manipulation et fatiguera le personnel dans le traitement des informations.\\
+La solution informatique a l'avantage de traiter des informations avec la rapidité et précision, de rendre fiable la gestion de l'information. Elle présente aussi l'inconvénient d'engager des grosses dépenses pour son installation, le coût à la formation ou recrutement des agents et autres.\\
+\newpage
+\begin{center}
+\textbf{Choix de la technologie utilisée }\\
+\end{center}
+
+\textbf{UML(Unified Modeling Language) }\\
+Dans le cadre de ce travail le langage UML(Unified Modeling Language) est utilisé pour la modélisation.C’est un langage de modélisation graphique à base de pictogramme conçu comme une méthode normalisée de visualisation dans les domaines du développement logiciel et en conception orienté objet.\\
+ UML est utilisé comme langage de modélisation et Start UML comme logiciel de conception.\\
+    \begin{center}
+\textbf{STARTUML }\\
+\end{center}
+C’est un outil de modélisation UML. Il permet d'analyser, de dessiner, et de déployer. L'application nous permet de dessiner tous types de diagrammes UML.\\ 
+ \begin{center}
+\textbf{SGBD }\\ 
+\end{center} 
+PostgreSQL est un système de gestion de base de données relationnelle et objet. C'est un outil libre disponible selon les termes d'une licence de type BSD. Ce système est comparable à d'autres systèmes de gestion de base de données;\\
+Il permet de créer,manipuler facilement des bases de données relationnelle.\\
+\begin{center}
+\textbf{Conception du système}\\
+\end{center}
+La conception a débuté par la modélisation du diagrammes de cas d’utilisation puis le diagramme de classe et le diagramme de séquence.\\
+\begin{center}
+\textbf{Diagramme de cas d’utilisation}\\
+\end{center}
+Les cas d’utilisation décrivent le comportement du système du point de vue de l’utilisateur sous la forme d’actions et de réactions. \\
+Un cas d’utilisation indique une fonctionnalité du système déclenché par un acteur externe au système.\\
+
+\textbf{identification des acteurs}\\
+Un acteur est une entité externe qui agit sur le système. Le terme acteur ne désigne pas seulement les utilisateurs humains mais également les autres systèmes.\\
+Les acteurs de notre application sont :\\
+    1) Technicien\\
+    2) Fournisseur\\
+    3) GRH\\
+    \\
+    Le diagramme ci-dessous montre l'ensemble des cas d'utilisation et décrit les exigences fonctionnelles du système. Chaque cas d'utilisation correspond donc à une fonction besoin du système.
+\newpage
+    \begin{center}
+\includegraphics[scale=0.7]{ucd.jpg}~\\[1.5cm]
+\end{center}
+\newpage
+\begin{center}
+\textbf{Diagramme de classe}\\
+\end{center}
+Un diagramme de classes est un schéma représentant toutes les classes d’un programme, leurs attributs, leurs méthodes, ainsi que les relations qu’il comporte.
+\begin{center}
+\includegraphics[scale=0.7]{Main.jpg}~\\[1.5cm]
+\end{center}
+le système centralise a fait naître d’autre système plus fiables (système décentralise, système distribué) vu ses limites. Mais reste comme un modèle de communication client/serveur.\\
+\begin{center}
+\textbf{Implémentation de la base de donnée}\\
+\end{center}
+\textbf{Le SGBD PostgreSQL}
+Un SGBD permet de décrire, manipuler et interroger les données d'une Base de Données. Il est chargé de tous les problèmes liés aux accès concurrents, à la sauvegarde et la restauration des données. Il doit de plus veiller au contrôle, à l'intégrité et la sécurité des données.\\
+PostgreSQL est un système de gestion de base de données relationnelle et objet. C'est un outil libre disponible selon les termes d'une licence de type BSD. Ce système est comparable à d'autres systèmes de gestion de base de données, qu'ils soient libres, ou propriétaires.Il fait partie des logiciels de gestion de base de donnée les plus utilisés au monde, autant par le grand public (applications web principalement) que par des professionnels. \\
+
+L’implémentation de cette base de donnée pour la gestion de production de la société YPRODUCT a été fait sous PostgreSQL.\\
+Les scripts de création sont :\\
+Cf la base exporté.
+\begin{center}
+\textbf{Conclusion}\\
+\end{center}
+En somme, la modélisation d’un systèmes en UML passe nécessairement par ces deux diagrammes(diagramme de cas dutilisation et diagramme de classe) . Suivant ces modèles le système de gestion de la société YPRODUCT a été réalisé.\\
+Ce travail nous a apporte une grande expérience et restera un modèle pour notre cursus en Informatique.
+
+\end{document}

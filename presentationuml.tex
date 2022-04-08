@@ -1,0 +1,244 @@
+\documentclass[11pt]{beamer}
+%\usetheme{Warsaw}
+\usetheme{Madrid}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+%\title{}
+
+\title[]{\textbf{Programmation Distribuée\\}}
+ 
+%\author{}
+\author[]{ Présenté par:\\ \textsc{ }
+}
+
+\date[21 mars 2022]{21 mars 2022}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+
+%\institute{} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+ \begin{columns}
+\begin{column}{8cm}
+
+\small{
+
+\color{black}{Université de N'Djamena\\}
+\color{black}{Département d'Informatique\\}
+\color{black}{Master 1 Informatique\\}
+\color{blue}{Spécialité : MARS \& MIDD\\}}
+
+\normalsize
+ \end{column}
+ 
+
+ \begin{column}{4cm}
+
+   \begin{figure}
+      \includegraphics[scale=0.2]{logo.jpg}
+   \end{figure}
+
+ \end{column}
+ 
+  \end{columns}  
+
+\begin{center}
+
+
+
+\color{black}{  \textbf{Matière : \\ \footnotesize	{\color{blue}\textbf \small {Programmation Distribuée} }}}\\
+\end{center}
+
+				\rule{0,98\textwidth}{2pt} \vspace{0.1\baselineskip} \\
+%				\vspace{-2mm}
+
+\small { \textbf{ \color{blue} \begin{center}  Thème : \\Programmation d'une application de CHAT\\ (Cas de Socket).\end{center}}} 
+\normalsize
+				%\vspace{-0.7cm}
+				\rule{0,98\textwidth}{2pt}\vspace{0.1\baselineskip}\\
+				
+%			\end{spacing}
+%\vspace{-0.2cm}
+
+      \begin{columns}
+\begin{column}{8cm}
+
+  \scriptsize {
+       {\underline {Présenté par :}\\Mahamat Mahamat Abdoulaye\\Yves Ouatché}}
+ 
+
+ \end{column}
+ 
+
+ \begin{column}{8cm}
+
+  \scriptsize {
+       {\underline {Enseignant:}\\ Dr Bery Mbaiossoum Leouro\\ \ \\ \ \\ \ \\ \ \\ \ \\
+      }}
+ 
+
+ \end{column}
+ 
+  \end{columns}  
+
+  
+
+\vspace{-0.3cm}
+
+\begin{center}
+   \small {Année: 2019-2020}
+   \normalsize
+
+\end{center}
+%\frame{\titlepage}
+
+%\begin{frame}
+%\titlepage
+%\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{\textbf {PLAN DU TRAVAIL}}
+ \begin{enumerate}
+ \item Introduction
+ \item Description générale
+ \item Pratique
+ \item Conclusion
+ \end{enumerate}
+	
+ 	
+  \end{frame}
+ 
+   %\begin{frame}
+   
+ 
+                 
+         
+          		\section {Introduction}
+          		
+          		\begin{frame}{\textbf {Introduction}}
+             
+         \begin{block}{Introduction}
+         \large
+La programmation distribuée comportent un ensemble de technologies et de méthodes d'écriture de logiciels, permettant de rendre l'exécution de ces derniers plus rapide.\\
+Les applications distribuée sont couramment utilisées dans un réseau ayant une relation client-serveur dans laquelle un ordinateur client accède à un programme à partir du serveur et le serveur effectue tout le traitement.
+\end{block}                      
+             
+   \end{frame} 
+        		
+        		%\section {Définitions}
+        		
+ \begin{frame}{ \textbf {Description générale}}
+             
+         \begin{block}{Description générale}
+
+\large
+Le projet consiste à créer une application de chat java entre un/plusieurs clients et un serveur en utilisant les sockets.\\
+Un chat(prononcez « tchatte ») est un espace permettant une discussion par écrit en temps réel entre plusieurs internautes(clients).\\
+
+Le terme chat provient du verbe anglais to chat qui signifie bavarder.
+\end{block}                           
+  \end{frame}  
+  
+        		%\section {Définitions}
+  \begin{frame}{\textbf {Description générale}}      		
+   
+\begin{block}{Description générale} 
+\large
+Ce mode de communication connaît un grand succès depuis une dizaine d’années, notamment chez les jeunes et même le chat est également un outil au service des entreprises. \\
+L’un des usages les plus répandus du tchat est la conversation entres amis.\\
+ La majorité des réseaux sociaux proposent ainsi cette fonctionnalité.
+ \end{block}                      
+
+  \end{frame}   
+   
+  \begin{frame}{\textbf {Description générale }}
+              
+         \begin{block}{Description générale}
+         \large
+Les conversations sur un chat ont lieu en temps réel qui se différencie d'un forum ou de courrier électronique.\\
+Le serveur java initialise la connexion, il lance l'écoute sur un port et se met en attente des connexions entrantes pour qu'il les accepte.\\
+le client envoie une demande au serveur avec un numéro de port et le serveur accepte la demande et transmit ses informations (adresse ip) au client. Maintenant, la connexion est établie et un échange de messages peut se faire.
+
+
+
+\end{block}                           
+  \end{frame}      		
+        	 	
+				\section {Description générale}
+				
+\begin{frame}{\textbf {Description générale}}
+          
+         \begin{block}{Description générale}
+         \large
+Java fournit un package java.net qui traite tout ce qui est réseau, on a besoin seulement de deux classes:\\
+
+   • java.net.ServerSocket: cette classe accepte les connexions venues des clients.\\
+    •java.net.Socket: cette classe permet de se connecter à la machine distante.\\
+
+On a besoin aussi d'un outil pour saisir, envoyer et recevoir le flux:\\
+
+   • Scanner: lire les entrées clavier.\\
+   • BufferedReader: lire le texte reçu à partir de l'émetteur.\\
+   • BufferedWriter: envoyer le texte saisi.\\
+
+
+\end{block}                      
+             
+   \end{frame} 		
+   
+ \begin{frame}{\textbf {Pratique}}
+          
+         \begin{block}{Pratique}
+
+    
+\end{block}                      
+             
+   \end{frame}    
+   		
+			
+			 
+   
+			
+   
+ 
+   
+   \begin{frame}{\textbf {Conclusion}}
+  
+   \begin{block}{Conclusion}
+   \Large
+la communication sur le chat se passe en temps réel,et peut se faire entre un client et serveur ou plusieurs clients et un serveur.
+   \end{block}                      
+             
+   \end{frame}
+   
+     
+   
+    \begin{frame}{\textbf {}}
+  
+   \begin{block}{}
+   \begin{center}
+   Merci de votre aimable attention!
+ 
+   \end{center}
+
+    
+    
+    
+   \end{block}                      
+             
+   \end{frame} 
+   
+   
+\end{document}

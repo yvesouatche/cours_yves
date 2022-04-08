@@ -1,0 +1,145 @@
+\documentclass[12pt, openany]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  \includegraphics[scale=0.8]{logo.jpg}~\\[1.5cm]
+  \textsc{\LARGE UNIVERSITE DE NDJAMENA}\\[2cm]
+\textsc{\Large Master 1 Informatique\\ Option MARS}
+    % Title
+    \HRule \\[0.4cm]
+    { \huge \bfseries Thème Système centralisé (client/serveur) multithreading
+\\[0.4cm] }
+
+    \HRule \\[2cm]
+
+    % Author and supervisor
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+      \textbf{ Présenté par :}\\
+      Maramadji Theodore \\Mordjim Meregne Natacha
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+        \emph{\textbf{sous la supervision de :}}\\ Pr \textsc{ Daouda Ahmat}\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+ % Bottom of the page
+    {\large ANNÉE 2019 - 2020 }
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+\newpage
+\begin{center}
+\textbf{Plan du travail}
+\end{center}
+\begin{enumerate}
+\item Introduction
+\item Principe du client/serveur
+\item Communication client/serveur 
+\item Description du projet
+\item Implémentation
+\item Conclusion
+\end{enumerate}
+\newpage
+\begin{center}
+\textbf{Introduction}\\
+\end{center}
+Le système centralisé est système utilisant l’architecture client/serveur dans lequel seul le serveur produit .L’architecture client/serveur est un système de communication entre plusieurs équipements dans un réseau .\\
+Chaque entité est considérée comme un client ou un serveur. Chaque logiciel client peut envoyer des requêtes au serveur. Le serveur peut être spécialisé en serveur d’applications, de fichiers, de terminaux, ou encore de messagerie électronique.\\
+Les services sont exploités par des programmes, appelés programmes clients, s'exécutant sur les machines clientes. On parle ainsi de client (client FTP, client de messagerie, etc.) lorsque l'on désigne un programme tournant sur une machine cliente, capable de traiter des informations qu'il récupère auprès d'un serveur (dans le cas du client FTP il s'agit de fichiers, tandis que pour le client de messagerie il s'agit de courrier électronique).
+\newpage
+\begin{center}
+\textbf{ Principe du client/serveur}\\
+\end{center}
+    • Le client émet une requête vers le serveur grâce à son adresse IP et le port, qui désigne un service particulier du serveur.\\
+    • Un serveur est initialement passif, il attend, il est à l’écoute, prêt à répondre aux requêtes envoyées par des clients. Dés qu’une requête lui parvient, il la traite et envoie une réponse à l'aide de l'adresse de la machine cliente et son port.\\
+Le client et le serveur doivent utiliser le même protocole de communication.Un serveur est généralement capable de servir plusieurs clients simultanément.\\
+Remarques : Une fois le client traité, le serveur peut en traiter un autre. Il existe des serveurs multi-clients comme les serveurs Web /http qui sont capables de traiter plusieurs clients en même temps. Il existe aussi des serveurs « non connectés », dans ce cas il n’y a pas de connexion ou de déconnexion.
+\begin{center}
+\includegraphics[scale=0.6]{n1.jpg}~\\[1.5cm]
+\end{center}
+\newpage
+\begin{center}
+\textbf{Communication client/serveur }\\
+\end{center}
+Le mode client/serveur n’est pas le modèle de communication parfait, il n’y en a pas ! Connaissant les avantages et les inconvénients par rapport au mode distribué (par exemple pair à pair), il est possible de choisir celui qui convient le mieux.\\
+\textbf{Avantages de l'architecture client/serveur}\\
+Le modèle client/serveur est particulièrement recommandé pour des réseaux nécessitant un grand niveau de fiabilité, ses principaux atouts sont :\\
+    • des ressources centralisées : étant donné que le serveur est au centre du réseau, il peut gérer des ressources communes à tous les utilisateurs, comme par exemple une base de données centralisée, afin d'éviter les problèmes de redondance et de contradiction.\\
+    • une meilleure sécurité : car le nombre de points d'entrée permettant l'accès aux données est moins important.\\
+    • une administration au niveau serveur : les clients ayant peu d'importance dans ce modèle, ils ont moins besoin d'être administrés.\\
+    • un réseau évolutif : grâce à cette architecture il est possible de supprimer ou rajouter des clients sans perturber le fonctionnement du réseau et sans modification majeure.
+    \begin{center}
+\textbf{Inconvénients du modèle client/serveur }\\
+\end{center}
+L'architecture client/serveur a tout de même quelques lacunes parmi lesquelles :\\
+    • un coût élevé dû à la technicité du serveur;\\
+    • un maillon faible : le serveur est le seul maillon faible du réseau client/serveur, étant donné que tout le réseau est architecturé autour de lui ! Heureusement, le serveur a une grande tolérance aux pannes
+    
+\newpage
+\begin{center}
+\textbf{Description du projet}
+\end{center}
+
+Le projet nommé Système centralisé(client/serveur) utilisant les multithreading consiste à définir un système dans lequel tous les clients sont connecter au serveur(leur seule ressource). Dans ce système chaque client émet une requête et trouve une réponse indépendamment des autres requettes des autres clients.\\
+Pour cela nous utilisons plusieurs threads .\\
+serveur multi-thread
+pour qu’un serveur puis communiquer avec plusieurs clients en même temps il faut que :\\
+    1. le serveur puis attendre une connexion a tout moment
+accept()  dans une boucle infinie;\\
+
+    2. pour chaque connexion créer un nouveau thread  associer à la socket du client crée ,puis attendre à nouveau une nouvelle connexion;\\
+
+    3. le thread crée doit s’occuper des opérations entrées sorties pour communiquer avec le client indépendamment des autres activités du serveur.
+    \begin{center}
+\includegraphics[scale=0.7]{n2.jpg}~\\[1.5cm]
+\end{center}
+\newpage
+\begin{center}
+\textbf{Structure de programme client/serveur  }
+\end{center}
+Création d’un socket utilisant multithreading\\
+
+    • biblitheques\\
+
+\# include <sys/types.h>\\
+\# include <sys/socket.h>\\
+\# include<pthread.h>\\
+    • déclaration d'un socket\\
+    \begin{center}
+\includegraphics[scale=0.7]{n3.jpg}~\\[1.5cm]
+\end{center}
+ 
+     • structure de code de communication client/serveur
+    \begin{center}
+\includegraphics[scale=0.7]{n4.jpg}~\\[1.5cm]
+\end{center}
+\newpage
+\begin{center}
+\textbf{Implémentation}
+\end{center}
+\newpage
+\begin{center}
+\textbf{Conclusion}
+\end{center}
+le système centralise a fait naître d’autre système plus fiables (système décentralise, système distribué) vu ses limites. Mais reste comme un modèle de communication client/serveur
+
+\end{document}
